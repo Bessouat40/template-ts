@@ -1,7 +1,9 @@
 # template-ts
+
 Template typescript project
 
-```javascript
+```bash
+export NODE_OPTIONS=--openssl-legacy-provider -------> if react > v17
 npm install
 npm run build
 npm run start

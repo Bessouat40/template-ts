@@ -1,0 +1,17 @@
+.buttons button {
+  background-color: #a9b2a7;
+  width: 100px;
+  height: 50px;
+  color: #182615;
+  font-size: 1.5em;
+  border-radius: 10px;
+  border: 5px solid #182615;
+  cursor: pointer;
+  transition: background-color 0.5s, color 0.5s, transform 1s;
+}
+
+.buttons button:hover {
+  background-color: #182615;
+  color: #a9b2a7;
+  transform: scale(1.2);
+}
