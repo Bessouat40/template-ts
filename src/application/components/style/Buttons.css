@@ -1,6 +1,13 @@
+.buttons {
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  display: flex;
+}
+
 .buttons button {
   background-color: #a9b2a7;
-  width: 100px;
+  width: 150px;
   height: 50px;
   color: #182615;
   font-size: 1.5em;

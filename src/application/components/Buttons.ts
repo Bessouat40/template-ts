@@ -12,37 +12,40 @@ export class Buttons {
     const change_mode = document.createElement('button');
     change_mode.textContent = 'Mode';
     change_mode.addEventListener('click', this.handle_change_mode.bind(this));
-
     this.buttons.appendChild(change_mode);
+    const increase = document.createElement('button');
+    increase.textContent = 'Increase';
+    increase.addEventListener('click', this.handle_increase.bind(this));
+    this.buttons.appendChild(increase);
   }
 
   render(container: HTMLElement): void {
     container.appendChild(this.buttons);
   }
 
-  private handle_change_mode(): void {
-    this.mode = (this.mode + 1) % 3;
-    this.change_mode();
-    this.update_buttons();
+  private handle_increase(): void {
+    this.increase_time();
     this.time_instance.update_time();
   }
 
-  private update_buttons(): void {}
-
-  private change_mode(): void {
+  private increase_time(): void {
     switch (this.mode) {
-      case 0: {
-        this.time_instance.change_hours = false;
-        this.time_instance.change_minutes = false;
-      }
       case 1: {
-        this.time_instance.change_hours = true;
-        this.time_instance.change_minutes = false;
+        this.time_instance.increase_hours++;
+        break;
       }
-      case 1: {
-        this.time_instance.change_hours = false;
-        this.time_instance.change_minutes = true;
+      case 2: {
+        this.time_instance.increase_minutes++;
+        break;
       }
     }
   }
+
+  private handle_change_mode(): void {
+    this.mode++;
+    this.mode = this.mode % 3;
+    this.update_buttons();
+  }
+
+  private update_buttons(): void {}
 }

@@ -6,13 +6,15 @@ export class Time {
   private current_time: Date;
   public change_hours: boolean;
   public change_minutes: boolean;
-  public increase: number;
+  public increase_minutes: number;
+  public increase_hours: number;
 
   constructor() {
     window.setInterval(() => this.update_time(), 1000);
     this.change_hours = false;
     this.change_minutes = false;
-    this.increase = 0;
+    this.increase_minutes = 0;
+    this.increase_hours = 0;
     this.time = document.createElement('div');
     this.time.className = 'time';
     this.current_time = new Date();
@@ -34,9 +36,9 @@ export class Time {
   }
 
   private format_minutes_hours(date: Date): [number, number] {
-    const increase_hours = this.increase * Number(this.change_hours);
+    const increase_hours = this.increase_hours;
     let hours = (date.getHours() + increase_hours) % 24;
-    const increase_minutes = this.increase * Number(this.change_minutes);
+    const increase_minutes = this.increase_minutes;
     const minutes = (date.getMinutes() + increase_minutes) % 60;
     if (minutes < date.getMinutes()) {
       hours = (hours + 1) % 24;
@@ -49,14 +51,7 @@ export class Time {
     this.display_current_time.textContent = this.format_time(currentTime);
   }
 
-  private modify_time(
-    increase: number,
-    change_hours: boolean,
-    change_minutes: boolean
-  ): void {
-    this.increase = increase;
-    this.change_hours = change_hours;
-    this.change_minutes = change_minutes;
+  public modify_time(): void {
     this.update_time();
   }
 }
