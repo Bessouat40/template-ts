@@ -27,7 +27,7 @@ export class Buttons {
     this.increase.textContent = 'Increase';
     this.increase.addEventListener('click', this.handle_increase.bind(this));
     this.buttons.appendChild(this.increase);
-    this.decrease = document.createElement('button');
+    this.increase = document.createElement('button');
     this.decrease.textContent = 'Decrease';
     this.decrease.addEventListener('click', this.handle_decrease.bind(this));
     this.buttons.appendChild(this.decrease);
@@ -65,17 +65,14 @@ export class Buttons {
       }
     }
   }
-
   private decrease_time(): void {
     switch (this.mode) {
       case 1: {
-        this.time_instance.increase_hours =
-          (this.time_instance.increase_hours - 1 + 24) % 24;
+        this.time_instance.increase_hours--;
         break;
       }
       case 2: {
-        this.time_instance.increase_minutes =
-          (this.time_instance.increase_minutes - 1 + 60) % 60;
+        this.time_instance.increase_minutes--;
         break;
       }
     }
@@ -92,19 +89,16 @@ export class Buttons {
       case 0: {
         this.current_mode.textContent = '';
         this.increase.disabled = true;
-        this.decrease.disabled = true;
         break;
       }
       case 1: {
         this.current_mode.textContent = 'Change hours';
         this.increase.disabled = false;
-        this.decrease.disabled = false;
         break;
       }
       case 2: {
         this.current_mode.textContent = 'Change minutes';
         this.increase.disabled = false;
-        this.decrease.disabled = false;
         break;
       }
     }

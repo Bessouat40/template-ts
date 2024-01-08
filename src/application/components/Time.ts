@@ -40,9 +40,9 @@ export class Time {
     let hours = (date.getHours() + increase_hours) % 24;
     const increase_minutes = this.increase_minutes;
     const minutes = (date.getMinutes() + increase_minutes) % 60;
-    if (minutes < date.getMinutes()) {
-      hours = (hours + 1) % 24;
-    }
+    // if (minutes < date.getMinutes()) {
+    //   hours = (hours + 1) % 24;
+    // }
     return [hours, minutes];
   }
 

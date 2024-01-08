@@ -22,3 +22,17 @@
   color: #a9b2a7;
   transform: scale(1.2);
 }
+
+.buttons button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  transform: scale(1);
+}
+
+.buttons button:hover:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  transform: scale(1);
+}
