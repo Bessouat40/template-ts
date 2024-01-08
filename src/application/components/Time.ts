@@ -11,10 +11,7 @@ export class Time {
 
   constructor() {
     window.setInterval(() => this.update_time(), 1000);
-    this.change_hours = false;
-    this.change_minutes = false;
-    this.increase_minutes = 0;
-    this.increase_hours = 0;
+    this.init_values();
     this.time = document.createElement('div');
     this.time.className = 'time';
     this.current_time = new Date();
@@ -25,6 +22,13 @@ export class Time {
 
   render(container: HTMLElement): void {
     container.appendChild(this.time);
+  }
+
+  private init_values(): void {
+    this.change_hours = false;
+    this.change_minutes = false;
+    this.increase_minutes = 0;
+    this.increase_hours = 0;
   }
 
   private format_time(date: Date): string {

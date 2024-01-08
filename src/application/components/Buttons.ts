@@ -1,7 +1,7 @@
 import { Clock } from './Clock';
 import { Time } from './Time';
-import './style/Buttons.css';
 import { Lights } from './subcomponents/Lights';
+import './style/Buttons.css';
 
 export class Buttons {
   private buttons: HTMLElement;
@@ -19,6 +19,20 @@ export class Buttons {
     this.buttons.className = 'buttons';
     this.current_mode = document.createElement('h1');
     this.buttons.appendChild(this.current_mode);
+    this.create_mode_button();
+    this.create_increase_button();
+    this.create_decrease_button();
+    this.create_reset_button();
+    this.lights = new Lights(this.clock_instance);
+    this.lights.render(this.buttons);
+    this.update_buttons_state();
+  }
+
+  render(container: HTMLElement): void {
+    container.appendChild(this.buttons);
+  }
+
+  private create_mode_button(): void {
     this.change_mode = document.createElement('button');
     this.change_mode.className = 'custom-button';
     this.change_mode.textContent = 'Mode';
@@ -27,16 +41,25 @@ export class Buttons {
       this.handle_change_mode.bind(this)
     );
     this.buttons.appendChild(this.change_mode);
+  }
+
+  private create_increase_button(): void {
     this.increase = document.createElement('button');
     this.increase.className = 'custom-button';
     this.increase.textContent = 'Increase';
     this.increase.addEventListener('click', this.handle_increase.bind(this));
     this.buttons.appendChild(this.increase);
+  }
+
+  private create_decrease_button(): void {
     this.decrease = document.createElement('button');
     this.decrease.className = 'custom-button';
     this.decrease.textContent = 'Decrease';
     this.decrease.addEventListener('click', this.handle_decrease.bind(this));
     this.buttons.appendChild(this.decrease);
+  }
+
+  private create_reset_button(): void {
     this.reset = document.createElement('button');
     this.reset.className = 'custom-button';
     this.reset.textContent = 'Reset';
@@ -45,13 +68,6 @@ export class Buttons {
       this.time_instance.reset_time.bind(this.time_instance)
     );
     this.buttons.appendChild(this.reset);
-    this.lights = new Lights(this.clock_instance);
-    this.lights.render(this.buttons);
-    this.update_buttons_state();
-  }
-
-  render(container: HTMLElement): void {
-    container.appendChild(this.buttons);
   }
 
   private handle_increase(): void {
@@ -101,7 +117,7 @@ export class Buttons {
   private update_buttons_state(): void {
     switch (this.mode) {
       case 0: {
-        this.current_mode.textContent = '';
+        this.current_mode.textContent = "Can't modify time";
         this.increase.disabled = true;
         this.decrease.disabled = true;
         break;
