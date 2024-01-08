@@ -5,15 +5,15 @@ body {
   width: 100%;
   height: 100%;
   position: relative;
-  background-color: #d4d8d3;
+  transition: background-color 1s;
 }
 
 .application {
   width: 100vw;
   height: 100vh;
-  flex-direction: column; /* Alignement vertical */
-  align-items: center; /* Centrer horizontalement */
-  gap: 50px; /* Espacement entre l'horloge et les boutons */
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
   display: flex;
   justify-content: center;
   align-items: center;

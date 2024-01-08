@@ -3,12 +3,29 @@
   width: 100vw;
 }
 
+.clock,
+.title {
+  transition: background-color 1s, color 1s;
+}
+
 .clock {
   border-radius: 300px;
-  border: 15px solid #53664e;
+  border: 15px solid #bec5bd;
   width: 300px;
   height: 300px;
+  display: flex;
   background-color: #182615;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.clock.dark {
+  border-radius: 300px;
+  border: 15px solid #182615;
+  width: 300px;
+  height: 300px;
+  background-color: #bec5bd;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,5 +34,10 @@
 
 .title {
   color: #bec5bd;
+  display: block;
+}
+
+.title.dark {
+  color: #182615;
   display: block;
 }

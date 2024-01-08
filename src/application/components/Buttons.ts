@@ -1,5 +1,7 @@
+import { Clock } from './Clock';
 import { Time } from './Time';
 import './style/Buttons.css';
+import { Lights } from './subcomponents/Lights';
 
 export class Buttons {
   private buttons: HTMLElement;
@@ -9,14 +11,16 @@ export class Buttons {
   private increase: HTMLButtonElement;
   private decrease: HTMLButtonElement;
   private reset: HTMLButtonElement;
+  private lights: Lights;
 
-  constructor(private time_instance: Time) {
+  constructor(private time_instance: Time, private clock_instance: Clock) {
     this.mode = 0;
     this.buttons = document.createElement('div');
     this.buttons.className = 'buttons';
     this.current_mode = document.createElement('h1');
     this.buttons.appendChild(this.current_mode);
     this.change_mode = document.createElement('button');
+    this.change_mode.className = 'custom-button';
     this.change_mode.textContent = 'Mode';
     this.change_mode.addEventListener(
       'click',
@@ -24,18 +28,25 @@ export class Buttons {
     );
     this.buttons.appendChild(this.change_mode);
     this.increase = document.createElement('button');
+    this.increase.className = 'custom-button';
     this.increase.textContent = 'Increase';
     this.increase.addEventListener('click', this.handle_increase.bind(this));
     this.buttons.appendChild(this.increase);
     this.decrease = document.createElement('button');
+    this.decrease.className = 'custom-button';
     this.decrease.textContent = 'Decrease';
     this.decrease.addEventListener('click', this.handle_decrease.bind(this));
     this.buttons.appendChild(this.decrease);
-    const decrease = document.createElement('button');
     this.reset = document.createElement('button');
+    this.reset.className = 'custom-button';
     this.reset.textContent = 'Reset';
-    this.reset.addEventListener('click', this.handle_reset.bind(this));
+    this.reset.addEventListener(
+      'click',
+      this.time_instance.reset_time.bind(this.time_instance)
+    );
     this.buttons.appendChild(this.reset);
+    this.lights = new Lights(this.clock_instance);
+    this.lights.render(this.buttons);
     this.update_buttons_state();
   }
 
@@ -108,10 +119,5 @@ export class Buttons {
         break;
       }
     }
-  }
-
-  private handle_reset(): void {
-    this.time_instance.increase_hours = 0;
-    this.time_instance.increase_minutes = 0;
   }
 }

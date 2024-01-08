@@ -11,7 +11,7 @@ export class App {
     this.container = document.createElement('div');
     this.clock = new Clock();
     this.clock.render(this.container);
-    this.buttons = new Buttons(this.clock.time);
+    this.buttons = new Buttons(this.clock.time, this.clock);
     this.buttons.render(this.container);
   }
 

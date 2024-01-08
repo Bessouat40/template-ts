@@ -1,0 +1,68 @@
+.container {
+  width: 46px;
+  height: 46px;
+  box-sizing: border-box;
+  padding: 12px;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.sun {
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.6) rotate(0deg);
+  transition: transform 0.3s ease-in, opacity 0.2s ease-in 0.1s;
+}
+
+.sun:before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    #f0f0f0 30%,
+    rgba(0, 0, 0, 0) 31%,
+    rgba(0, 0, 0, 0) 50%,
+    #f0f0f0 50%
+  );
+  transform: rotate(45deg);
+}
+
+.sun.visible {
+  pointer-events: auto;
+  opacity: 1;
+  transform: scale(1) rotate(180deg);
+  transition: transform 0.3s ease-in, opacity 0.2s ease-in 0.1s;
+}
+
+.moon {
+  width: 50%;
+  height: 50%;
+  pointer-events: none;
+  position: absolute;
+  left: 12.5%;
+  top: 18.75%;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 50%;
+  box-shadow: 9px 3px 0px 0px #f0f0f0;
+  opacity: 0;
+  transform: scale(0.3) rotate(65deg);
+  transition: transform 0.3s ease-in, opacity 0.2s ease-in 0.1s;
+}
+
+.moon.visible {
+  pointer-events: auto;
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  transition: transform 0.3s ease-in, opacity 0.2s ease-in 0.1s;
+}

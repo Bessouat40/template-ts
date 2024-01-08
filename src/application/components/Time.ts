@@ -1,7 +1,7 @@
 import './style/Time.css';
 
 export class Time {
-  private time: HTMLElement;
+  public time: HTMLElement;
   private display_current_time: HTMLElement;
   private current_time: Date;
   public change_hours: boolean;
@@ -40,9 +40,6 @@ export class Time {
     let hours = (date.getHours() + increase_hours) % 24;
     const increase_minutes = this.increase_minutes;
     const minutes = (date.getMinutes() + increase_minutes) % 60;
-    // if (minutes < date.getMinutes()) {
-    //   hours = (hours + 1) % 24;
-    // }
     return [hours, minutes];
   }
 
@@ -52,6 +49,12 @@ export class Time {
   }
 
   public modify_time(): void {
+    this.update_time();
+  }
+
+  public reset_time(): void {
+    this.increase_hours = 0;
+    this.increase_minutes = 0;
     this.update_time();
   }
 }

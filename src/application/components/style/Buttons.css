@@ -5,32 +5,36 @@
   display: flex;
 }
 
-.buttons button {
+.buttons h1 {
+  color: #ffffff;
+}
+
+.buttons .custom-button {
   background-color: #a9b2a7;
   width: 150px;
   height: 50px;
   color: #182615;
   font-size: 1.5em;
   border-radius: 10px;
-  border: 5px solid #182615;
+  border: 5px solid #ffffff;
   cursor: pointer;
   transition: background-color 0.5s, color 0.5s, transform 1s;
 }
 
-.buttons button:hover {
+.buttons .custom-button:hover {
   background-color: #182615;
   color: #a9b2a7;
   transform: scale(1.2);
 }
 
-.buttons button:disabled {
+.buttons .custom-button:disabled {
   background-color: #ccc;
   color: #666;
   cursor: not-allowed;
   transform: scale(1);
 }
 
-.buttons button:hover:disabled {
+.buttons .custom-button:hover:disabled {
   background-color: #ccc;
   color: #666;
   cursor: not-allowed;
